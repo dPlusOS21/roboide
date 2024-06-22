@@ -79,9 +79,8 @@ We welcome contributions from the community! Please fork the repository and subm
 
 ## Contributors
 
-- [Your Name](https://github.com/your-github-profile)
-- [Contributor Name](https://github.com/contributor-github-profile)
+
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the APACHE License - see the [LICENSE](LICENSE) file for details.
