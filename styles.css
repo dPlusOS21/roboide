@@ -1,0 +1,147 @@
+/*#blocklyDiv {
+    height: 800px;
+    width: 800px;
+    //margin: 20px auto;
+    border: 1px solid #ccc;
+}
+*/
+
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+    float: left;
+    margin: 0px;
+    padding: 14.5px 20px;
+    font-size: 12px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: inline-block;
+    cursor: pointer;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    //display: flex;
+    justify-content: center;
+    //align-items: flex-start;
+    margin: 0px;
+    height: 100%
+}
+
+#container {
+    display: flex;
+    width: 100%;
+}
+
+#blocklyDiv {
+    border: 1px solid #ccc;
+}
+
+/* Blockly css -------------------- */
+/* Makes our label white. */
+.blocklyTreeLabel {
+  color: black;
+}
+/* Adds padding around the group of categories and separators. */
+.blocklyToolboxContents {
+  padding: 0.5em;
+}
+/* Adds space between the categories, rounds the corners and adds space around the label. */
+.blocklyTreeRow {
+  padding: 3px;
+  margin-bottom: 0.5em;
+  border-radius: 0px;
+}
+
+/* Changes color of the icon to white. */
+.customIcon {
+  color: white;
+}
+/* Stacks the icon on top of the label. */
+.blocklyTreeRowContentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.blocklyTreeRow {
+  height: initial;
+}
+/* Blockly css -------------------- */
+
+#threeDiv {
+    border: 1px solid #ccc;
+}
+
+       .menu {
+            text-align: left;
+            margin-bottom: 10px;
+        }
+       .menu button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            //border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+       .menu button:hover {
+            background-color: #45a049;
+        }
+
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.navbar button {
+    float: left;
+    display: block;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.navbar button:hover {
+    background-color: #45a049;
+}
+
+.navbar img {
+    float: left;
+    display: block;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    width: 43px;
+    height: 43px;
+    padding: 0px 0px;
+    //padding: 14px 16px;
+    border: none;
+    cursor: pointer;
+}
+
+

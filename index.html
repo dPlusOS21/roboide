@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scratch-like Editor</title>
+    <link rel="stylesheet" href="styles.css">
+<!-- caricamento librerie di funzionamento Blockly -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/blockly/6.20210701.0/blockly_compressed.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/blockly/6.20210701.0/blocks_compressed.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/blockly/6.20210701.0/msg/en.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/blockly/6.20210701.0/javascript_compressed.min.js"></script> 
+<!-- caricamento librerie di funzionamento Blockly -->
+
+<!-- caricamento librerie di funzionamento Tree.JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.min.js"></script>
+<!-- caricamento librerie di funzionamento Tree.JS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--
+    <script src="https://cdn.jsdelivr.net/npm/johnny-five@2.1.0/lib/johnny-five.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+-->
+</head>
+<body>
+
+<div class="navbar">
+    <a href="#" onclick="location.reload();"><i class="fas fa-home"></i> Home</a>
+    <label for="fileUpload" class="custom-file-upload">Upload</label>
+    <input id="fileUpload" type="file" onchange="uploadProject(event)" />
+    <button onclick="downloadProject()">Download</button>
+    <button onclick="generateCode()">GC</button>
+    <button onclick="runRendering()">Run</button>
+    <button onclick="stopRendering()">Stop</button>
+    <img id="infoButton" src="https://johnny-five.io/img/j5-logo.svg" alt="Johnny-Five">
+</div>
+
+    <div id="container">
+        <div id="blocklyDiv" style="height: 800px; width: 70%;"></div>
+        <div id="threeDiv" style="height: 800px; width: 30%;"></div>
+    </div>
+    <xml id="toolbox" style="display: none">
+  <category css-icon="customIcon fa fa-cog" name="Logic" categorystyle="logic_category">
+    <block type="logic_compare"></block>
+    <block type="logic_operation"></block>
+    <block type="logic_negate"></block>
+    <block type="logic_boolean"></block>
+    <block type="logic_null"></block>
+    <block type="logic_ternary"></block>
+  </category>
+  <category name="Loops" categorystyle="loop_category">
+    <block type="controls_if"></block>
+    <block type="controls_repeat_ext"></block>
+    <block type="controls_whileUntil"></block>
+    <block type="controls_for"></block>
+    <block type="controls_forEach"></block>
+    <block type="controls_flow_statements"></block>
+  </category>
+  <category name="Math" categorystyle="math_category">
+    <block type="math_number"></block>
+    <block type="math_arithmetic"></block>
+    <block type="math_single"></block>
+    <block type="math_trig"></block>
+    <block type="math_constant"></block>
+    <block type="math_number_property"></block>
+    <block type="math_change"></block>
+    <block type="math_round"></block>
+    <block type="math_on_list"></block>
+    <block type="math_modulo"></block>
+    <block type="math_constrain"></block>
+    <block type="math_random_int"></block>
+    <block type="math_random_float"></block>
+  </category>
+  <category name="Text" categorystyle="text_category">
+    <block type="text"></block>
+    <block type="text_join"></block>
+    <block type="text_append"></block>
+    <block type="text_length"></block>
+    <block type="text_isEmpty"></block>
+    <block type="text_indexOf"></block>
+    <block type="text_charAt"></block>
+    <block type="text_getSubstring"></block>
+    <block type="text_changeCase"></block>
+    <block type="text_trim"></block>
+    <block type="text_print"></block>
+    <block type="text_prompt_ext"></block>
+  </category>
+  <category name="Lists" categorystyle="list_category">
+    <block type="lists_create_with"></block>
+    <block type="lists_repeat"></block>
+    <block type="lists_length"></block>
+    <block type="lists_isEmpty"></block>
+    <block type="lists_indexOf"></block>
+    <block type="lists_getIndex"></block>
+    <block type="lists_setIndex"></block>
+    <block type="lists_getSublist"></block>
+    <block type="lists_split"></block>
+    <block type="lists_sort"></block>
+  </category>
+  <category name="Colour" categorystyle="colour_category">
+    <block type="colour_picker"></block>
+    <block type="colour_random"></block>
+    <block type="colour_rgb"></block>
+    <block type="colour_blend"></block>
+  </category>
+  <category name="Variables" categorystyle="variable_category" custom="VARIABLE"></category>
+  <category name="Functions" categorystyle="procedure_category" custom="PROCEDURE"></category>
+  <category name="Custom">
+    <block type="console_log"></block>
+  </category>
+        <category name="Robotica" colour="#A65C81">
+            <block type="select_board"></block>
+            <block type="move_joint"></block>
+            <block type="move_motor"></block>
+            <block type="led_on"></block>
+            <block type="led_off"></block>
+            <block type="read_sensor"></block>
+            <block type="control_servo"></block>
+            <block type="toggle_relay"></block>
+        </category>
+        <category name="Johnny-Five" colour="#ff9900">
+            <block type="accelerometer"></block>
+            <block type="altimeter"></block>
+            <block type="barometer"></block>
+            <block type="board"></block>
+            <block type="boards"></block>
+            <block type="button"></block>
+            <block type="compass"></block>
+            <block type="esc"></block>
+            <block type="escs"></block>
+            <block type="expander"></block>
+            <block type="gps"></block>
+            <block type="gyroscope"></block>
+            <block type="hygrometer"></block>
+            <block type="imu"></block>
+            <block type="joystick"></block>
+            <block type="keypad"></block>
+            <block type="lcd"></block>
+            <block type="led"></block>
+            <block type="led_controller"></block>
+            <block type="led_digits"></block>
+            <block type="led_matrix"></block>
+            <block type="led_rgb"></block>
+            <block type="leds"></block>
+            <block type="light"></block>
+            <block type="motion"></block>
+            <block type="motor"></block>
+            <block type="motors"></block>
+            <block type="motor_start"></block>
+            <block type="motor_stop"></block>
+            <block type="motor_brake"></block>
+            <block type="motor_release"></block>
+            <block type="motor_forward"></block>
+            <block type="motor_reverse"></block>
+            <block type="multi"></block>
+            <block type="multi_get_temperature"></block>
+            <block type="multi_get_pressure"></block>
+            <block type="multi_get_altitude"></block>
+            <block type="piezo"></block>
+            <block type="pin_digital"></block>
+            <block type="pin_analog"></block>
+            <block type="pin_digital_config"></block>
+            <block type="pin_analog_config"></block>
+            <block type="pin_analog_as_digital"></block>
+            <block type="sonar"></block>
+            <block type="thermometer"></block>
+            <block type="potentiometer"></block>
+            <block type="magnetometer"></block>
+            <block type="gas_sensor"></block>
+            <block type="humidity_sensor"></block>
+            <block type="light_sensor"></block>
+            <block type="touch_sensor"></block>
+            <block type="tilt_sensor"></block>
+            <block type="relay"></block>
+            <block type="sensor"></block>
+            <block type="servo"></block>
+            <block type="shift_register"></block>
+            <block type="sip"></block>
+            <block type="stepper"></block>
+            <block type="switch"></block>
+            <block type="thermometer"></block>
+        </category>
+        <category name="J5-Fn" colour="#FFE800">>
+            <block type="fn_debounce"></block>
+            <block type="fn_cloneDeep"></block>
+            <block type="fn_toFixed"></block>
+            <block type="fn_map"></block>
+            <block type="fn_constrain"></block>
+            <block type="fn_inRange"></block>
+            <block type="fn_range"></block>
+            <block type="fn_uid"></block>
+            <block type="fn_square"></block>
+            <block type="fn_sum"></block>
+            <block type="fn_fma"></block>
+        </category>
+    </xml>
+<!-- caricamento librerie di funzionamento Principali -->
+        <script src="main.js"></script>
+<!-- caricamento librerie di funzionamento Principali -->
+<!-- caricamento librerie di funzionamento Jhonny-Five e relativa FN.js -->
+        <script src="scripts.js"></script>
+        <script src="Fn_blocks.js"></script>
+        <script src="Fn_generator.js"></script>
+<!-- caricamento librerie di funzionamento Jhonny-Five e relativa FN.js -->
+</body>
+</html>
+
