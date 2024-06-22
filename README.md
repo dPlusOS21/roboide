@@ -4,7 +4,8 @@
 RoboIDE is an advanced integrated development environment (IDE) designed to streamline the development of robotic applications. It provides a user-friendly interface, comprehensive tools, and support for various programming languages commonly used in robotics.
 
 javascript programming ide with block technology aimed at generating javascript code for the Johonny Five library dedicated to Robotics.
-work in progress
+Work in progress...
+
 ![Schermata a 2024-06-22 12-40-26](https://github.com/dPlusOS21/roboide/assets/11348388/a852175d-4785-4f9f-8219-c654eabca53f)
 
 
@@ -24,9 +25,8 @@ Basic knowledge of HTML and JavaScript
 
 Clone the repository:
 
-git clone https://github.com/vroby65/blockly-sgljs.git
-Open the index.html file in your web browser.
-
+  git clone https://github.com/dPlusOS21/roboide.git
+  Open the index.html file in your web browser.
 
 ### Prerequisites
 
