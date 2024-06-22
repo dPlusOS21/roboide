@@ -11,40 +11,33 @@ work in progress
 ## Features
 
 - **User-Friendly Interface**: Intuitive and easy-to-navigate GUI.
-- **Multi-Language Support**: Supports languages such as Python, C++, and Java.
+- **Language Support**: Supports language Javascript.
 - **Simulation Environment**: Built-in simulation tools to test robotic applications.
-- **Code Completion**: Intelligent code completion and suggestions.
-- **Debugging Tools**: Advanced debugging features to troubleshoot code efficiently.
-- **Version Control**: Integrated with Git for version control and collaboration.
+- **Easy-to-use UI**: Blockly System code.
+- **Integration with Johnny Five Library for Robotics**.
+
+## Requirements
+Modern web browser
+Basic knowledge of HTML and JavaScript
 
 ## Installation
+
+Clone the repository:
+
+git clone https://github.com/vroby65/blockly-sgljs.git
+Open the index.html file in your web browser.
+
 
 ### Prerequisites
 
 - **Operating System**: Compatible with Windows, macOS, and Linux.
-- **Dependencies**: Ensure you have the following installed:
-  - Python 3.8+
-  - Git
-  - [Other dependencies]
 
 ### Steps
 
 1. Clone the repository:
-    ```bash
-    git clone https://github.com/dPlusOS21/roboide.git
-    ```
-2. Navigate to the project directory:
-    ```bash
-    cd roboide
-    ```
-3. Install required dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
-4. Run the application:
-    ```bash
-    python main.py
-    ```
+
+   git clone https://github.com/dPlusOS21/roboide.git
+   Open the index.html file in your web browser.
 
 ## Usage
 
@@ -58,28 +51,6 @@ work in progress
 ## Contributing
 
 We welcome contributions from the community! Please fork the repository and submit pull requests.
-
-### Steps to Contribute
-
-1. Fork the repository.
-2. Create a new branch:
-    ```bash
-    git checkout -b feature-branch
-    ```
-3. Make your changes.
-4. Commit your changes:
-    ```bash
-    git commit -m "Description of changes"
-    ```
-5. Push to the branch:
-    ```bash
-    git push origin feature-branch
-    ```
-6. Open a pull request on GitHub.
-
-## Contributors
-
-
 
 ## License
 
