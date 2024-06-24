@@ -5,6 +5,7 @@ function generateCode() {
     try {
         var code = Blockly.JavaScript.workspaceToCode(window.workspace);
         console.log(code);
+        editor.setValue(code);//document.getElementById('mycode').value=code;
         return code;
     } catch (error) {
         console.error('Errore nella generazione del codice:', error);
@@ -60,6 +61,53 @@ window.downloadProject = function() {
     window.stopRendering = function() {
         alert("Rendering fermato.");
     };
+
+function vedicodice() {
+    if(    document.getElementById("threeDiv").style.display!='none'){
+    	document.getElementById("threeDiv").style.display='none';
+    	document.getElementById("diveditor").style.display='inline';
+		//$("#diveditor").css("width", "97.7%");
+    }
+    else{
+    	document.getElementById("threeDiv").style.display='block';
+    	document.getElementById("diveditor").style.display='none';
+		//$("#diveditor").css("width", "calc(100% - 355px)");
+    }
+}
+
+// Sezione dedicata al div editor per editare il codice prodotto dalla interfaccia a blocchetti 
+    var editor = CodeMirror.fromTextArea(document.getElementById("mycode"), {
+      lineNumbers: true,
+      //theme: "night",
+      extraKeys: {
+        "Ctrl-Space": "autocomplete",
+        "F11": function(cm) {
+          cm.setOption("fullScreen", !cm.getOption("fullScreen"));
+        },
+        "Esc": function(cm) {
+          if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
+        },
+      },
+    mode: {name: "javascript", globalVars: true}
+    });
+
+if (typeof Promise !== "undefined") {
+  var comp = [
+    ["here", "hither"],
+    ["asynchronous", "nonsynchronous"],
+    ["completion", "achievement", "conclusion", "culmination", "expirations"],
+    ["hinting", "advise", "broach", "imply"],
+    ["function","action"],
+    ["provide", "add", "bring", "give"],
+    ["synonyms", "equivalents"],
+    ["words", "token"],
+    ["each", "every"],
+  ]
+
+}
+
+editor.setSize('99%', '100%');
+// Sezione dedicata al div editor per editare il codice prodotto dalla interfaccia a blocchetti 
 
 
 // Definizione blocchi personalizzati Johnny-Five
